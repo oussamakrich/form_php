@@ -3,15 +3,22 @@
 $servername = "localhost";
 $username = "root";
 
+echo "<h1> your info </h1>";
 
-	$EMAIL;
-	$PASS;
+$username = "oussama";
+$password = $username;
+$servername = "localhost";
+$database = "form";
 
-	$EMAIL = $_POST['email'];
-	$PASS  = $_POST['password'];
+$con = new mysqli($servername, $username, $password, $database);
 
+if (!$con->connect_error)
+{
 
+}
 
-
+else {
+	echo "connection failed";
+}
 ?>
 
