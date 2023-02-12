@@ -1,12 +1,14 @@
 <?php
 
+$servername = "localhost";
+$username = "root";
 
-echo "<h1> your info </h1>";
-// $tmp = $_POST['email'];	
-$tmp = $_REQUEST['email'];
-echo  "your email : $tmp","<br>";
-echo  "your password :" , $_POST["password"], "<br>";
 
+	$EMAIL;
+	$PASS;
+
+	$EMAIL = $_POST['email'];
+	$PASS  = $_POST['password'];
 
 
 
