@@ -12,28 +12,39 @@ function check_pass($p1, $p2)
 		return 1;
 }
 
+function estab_conn()
+{
+	$username = "oussama";
+	$password = "oussama";
+	$servername = "localhost";
+	$datab = "form";
+
+	$con = new mysqli($servername, $username, $password, $datab);
+	if ($con->connect_error)
+	{
+		echo "conn failed"; 
+		return (0);
+	}
+	return ($con);
+
+}
+
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 $pass1 = $_POST['pass1'];
 $pass2 = $_POST['pass2'];
 
-$username = "oussama";
-$password = "oussama";
-$servername = "localhost";
-$datab = "form";
+$con = estab_conn();
 
-$con = new mysqli($servername, $username, $password, $datab);
+echo $con;
 
-if ($con->connect_error)
-{
-	echo "conn failed"; 
-}
+//NOTE : check if email already exist
 
 if (check_pass($pass1, $pass2) == 1)
 {
 	$sql = "INSERT into form (fname, lname, email, password)
-		VALUES ($fname, $lname, $email, md5($pass1)";
+		VALUES ('$fname', '$lname', '$email', md5('$pass1'))";
 	if ($con->query($sql) === TRUE)
 	{
 		echo "query established";
@@ -43,6 +54,5 @@ if (check_pass($pass1, $pass2) == 1)
 		echo "failed";
 	}
 }
-
 	$con->close();
 ?>
