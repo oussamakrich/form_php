@@ -47,6 +47,7 @@ else {
 	}
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -58,4 +59,3 @@ else {
 		<a href="deconnexion.php">deconnexion</a>
 	</body>
 </html>
-

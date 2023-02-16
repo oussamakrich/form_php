@@ -46,29 +46,32 @@ function	check_email($con, $email)
 	return 0;
 }
 
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$email = $_POST['email'];
-$pass1 = $_POST['pass1'];
-$pass2 = $_POST['pass2'];
-
-
-$con = estab_conn();
-
-if (check_pass($pass1, $pass2) == 1)
+function to_register()
 {
-	if (check_email($con, $email))
-		exit (1);
-	$sql = "INSERT into form (fname, lname, email, password)
-		VALUES ('$fname', '$lname', '$email', md5('$pass1'))";
-	if ($con->query($sql) === TRUE)
-	{
-		echo "query established";
-	}
-	else {
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
+	$email = $_POST['email'];
+	$pass1 = $_POST['pass1'];
+	$pass2 = $_POST['pass2'];
 
-		echo "failed";
+
+	$con = estab_conn();
+
+	if (check_pass($pass1, $pass2) == 1)
+	{
+		if (check_email($con, $email))
+			exit (1);
+		$sql = "INSERT into form (fname, lname, email, password)
+			VALUES ('$fname', '$lname', '$email', md5('$pass1'))";
+		if ($con->query($sql) === TRUE)
+		{
+			echo "query established";
+		}
+		else {
+
+			echo "failed";
+		}
 	}
+		$con->close();
 }
-	$con->close();
 ?>
